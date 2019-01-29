@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>CS53001 Traveller</title>
+</head>
+
+<body>
+<h1>CS53001 Traveller</h1>
+
+First, a link to a php script (<tt>list_tables.php</tt>) that list all tables in
+your database:
+
+<p>
+<a href="../php/list-tables.php">List your tables!</a>
+</p>
+
+
+Second, a form to get all Natural and Cultural Attractions <tt>list_NA.php, list_CA.php</tt>.
+
+<p>
+    <a href="../php/list_NA.php">List National Park!</a>
+    <a href="../php/list_CA.php">List Cultural Site!</a>
+    
+</p>
+
+Third, a form to get all trails and buildings <tt>list_trail.php, list_building</tt>.
+
+<p>
+    <a href="../php/list_trail.php">List Hiking Trail!</a>
+    <a href="../php/list_building.php">List Famous Building!</a>
+
+</p>
+
+<!-- General -->
+<hr>
+Fourth, a form to country information. The script that runs when you press the <it>Submit</it> button is <tt>list_attrs.php</tt>.
+
+<form method=get action="../php/list_attrs.php">
+    <select name="user" id="user" onchange="this.form.submit()">
+        <option value="China">China</option>
+        <option value="United States">United States</option>
+        <option value="India">India</option>
+        <option value="Germany">Germany</option>
+    </select>
+    <input type="submit" value="Submit">
+</form>
+
+
+<hr>
+Fifth, a form to get the hiking trial or building start by the prefix given by users <tt>get_by_prefix.php</tt>.
+
+<p>
+    <a href="../php/get_by_prefix.php">Get Tourist Attractions by prefix and country</a>
+</p>
+
+<hr>
+Sixth, a form to get the resturants opened in both natural and cultural attractions and have a average star given by user requirement <tt>get_by_rate.php</tt>.
+
+<p>
+    <a href="../php/get_by_rate.php">Get Resturants by rate</a>
+</p>
+
+
+<!-- Natural Attraction -->
+<hr>
+Seventh, a form to get hiking trals based on level <tt>get_by_difficulty.php</tt>.
+
+<p>
+    <a href="../php/get_by_difficulty.php">Get hiking Trails by level</a>
+</p>
+
+<hr>
+Eighth, a form to get natural attractions based on Country <tt>get_na.php</tt>.
+<p>
+    <a href="../php/get_na.php">Get natural attractions by country</a>
+</p>
+
+<hr>
+Ninth, a form to get hiking trail based on tourist attractions <tt>get_trail.php</tt>.
+<p>
+    <a href="../php/get_trail.php">Get trail by natural attraction</a>
+</p>
+
+<hr>
+Tenth, a form to get resturants based on tourist attractions <tt>get_na_resturant.php</tt>.
+<p>
+    <a href="../php/get_na_resturant.php">Get resturants by natural attraction</a>
+</p>
+
+
+<!-- Cultural Attraction -->
+<hr>
+Eleventh, a form to get cultural attractions based on Country <tt>get_ca.php</tt>.
+<p>
+    <a href="../php/get_ca.php">Get cultural attractions by country</a>
+</p>
+
+
+<hr>
+Twelveth, a form to get Buildings based on country,year <tt>get_building.php</tt>.
+<p>
+    <a href="../php/get_building.php">Get buildings by cultural attraction</a>
+</p>
+
+<hr>
+Thirteenth, a form to get building based on designer <tt>get_designer.php</tt>.
+<p>
+    <a href="../php/get_designer.php">Get buildings by designer</a>
+</p>
+
+
+<!--
+<p>
+    <a href="Welcome.html">
+        <button>Go Back</button>
+    </a>
+</p>
+-->
+</body>
+</html>
+

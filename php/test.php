@@ -1,0 +1,107 @@
+<?php
+
+// Connection parameters 
+$host = 'mpcs53001.cs.uchicago.edu';
+$username = 'zhc008';
+$password = 'voh9eiHo';
+$database = $username.'DB';
+
+// Attempting to connect 
+$dbcon = mysqli_connect($host, $username, $password, $database)
+   or die('Could not connect: ' . mysqli_connect_error());
+
+// Selecting a database
+//   Unnecessary in this case because we have already selected 
+//   the right database with the connect statement.  
+mysqli_select_db($dbcon, $database)
+   or die('Could not select database');
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+if(isset($_POST['search']))
+{
+    $valueToSearch = $_POST['valueToSearch'];
+    // search in all table columns
+    // using concat mysql function
+    if ($valueToSearch != ''){
+        $query = "SELECT NA_Name, Type_View, Average_Temp FROM Natural_Attractions WHERE NA_Name = '$valueToSearch'";
+    }
+    else{   
+        $query = "SELECT NA_Name, Type_View, Average_Temp FROM Natural_Attractions";
+    }
+    $search_result = filterTable($query);
+    
+}
+ else {
+    $query = "SELECT NA_Name, Type_View, Average_Temp FROM Natural_Attractions";
+    $search_result = filterTable($query);
+}
+
+// function to connect and execute the query
+function filterTable($query)
+{
+    $host = 'mpcs53001.cs.uchicago.edu';
+    $username = 'zhc008';
+    $password = 'voh9eiHo';
+    $database = $username.'DB';
+
+    // Attempting to connect 
+    $dbcon = mysqli_connect($host, $username, $password, $database)
+    or die('Could not connect: ' . mysqli_connect_error());
+    
+    mysqli_select_db($dbcon, $database)
+    or die('Could not select database');
+    $filter_Result = mysqli_query($dbcon, $query);
+
+    return $filter_Result;
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PHP HTML TABLE DATA SEARCH</title>
+        <style>
+            table,tr,th,td
+            {
+                border: 1px solid black;
+            }
+            body { padding-top:50px; }
+        </style>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/custom.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container" >
+            <form action="test.php" method="post">
+                <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                    <input type="text" name="valueToSearch" class="form-control" placeholder="Value to Search" >
+                </div>      
+                <input type="submit" name="search" value="Filter" ><br><br>
+                </div>
+            </form>
+        
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>View</th>
+                    <th>Average Temperature</th>
+                </tr>
+
+      <!-- populate table from mysql database -->
+                <?php while($row = mysqli_fetch_array($search_result)):?>
+                <tr>
+                    <td><?php echo $row['NA_Name'];?></td>
+                    <td><?php echo $row['Type_View'];?></td>
+                    <td><?php echo $row['Average_Temp'];?></td>
+                </tr>
+                <?php endwhile;?>
+            </table>
+        </div>
+    
+        
+    </body>
+</html>
